@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = ".;pb";
+
+service Sample {
+    rpc Echo(EchoRequest) returns (EchoReply) {}
+    rpc Time(google.protobuf.Empty) returns (stream TimeMessage) {}
+}
+
+message TimeMessage {
+    google.protobuf.Timestamp timestamp = 1;
+}
+
+message EchoRequest {
+    string text = 1;
+}
+
+message EchoReply {
+    google.protobuf.Timestamp timestamp = 1;
+    string text = 2;
+}
