@@ -38,6 +38,7 @@ func start() {
 	var opts []grpc.DialOption
 	opts = append(opts, grpc.WithInsecure())
 
+  log.Printf("connecting to %s", serverAddr)
 	conn, err := grpc.Dial(serverAddr, opts...)
 	if err != nil {
 		log.Fatalf("fail to dial: %v", err)
